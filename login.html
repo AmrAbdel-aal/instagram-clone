@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="login">
+        <div class="container">
+            <div class="login-content">
+                <div class="slider" id="slider">
+                    <img class="active" src="assets/imgs/photo-1.png" alt="">
+                    <img src="assets/imgs/photo-2.png" alt="">
+                    <img src="assets/imgs/photo-3.png" alt="">
+                    <img src="assets/imgs/photo-4.png" alt="">
+                    <img src="assets/imgs/photo-5.png" alt="">
+                </div>
+                <div class="form" id="login-form">
+                    <div class="form-container">
+                        <div class="form-content">
+                            <div class="image">
+                                <img src="assets/imgs/instagram.png" alt="">
+                            </div>
+                            <form action="">
+                                <input type="text" placeholder="Phone number, username or email">
+                                <input type="password" placeholder="Password">
+                                <button>Log In</button>                                
+                            </form>
+                            <div class="or">
+
+                            </div>
+                            <div class="facebook-login">
+                                <a href="#"><img src="assets/imgs/facebook-logo.png" alt=""></a>
+                                <span>Log in with Facebook</span>
+                                <span>Forgot password?</span>
+                                
+                            </div>
+                        </div>
+                        <div class="sign-up">
+                            <span>Don't have an account? </span>
+                            <a href="sign-up.html">Sign up</a>
+                        </div>
+                        <div class="download">
+                            <p>Get the app</p>
+                            <div class="download-images">
+                                <a href="#"><img src="assets/imgs/app-store.png" alt=""></a>
+                                <a href="#"><img src="assets/imgs/google-play.png" alt=""></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer">
+                <div class="links" id="links">
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Jobs</a>
+                    <a href="#">Help</a>
+                    <a href="#">API</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Teams</a>
+                    <a href="#">Top Accounts</a>
+                    <a href="#">Hashtags</a>
+                    <a href="#">Locations</a>
+                    <a href="#" id="dark-btn">Dark</a>
+                </div>
+                <p id="copy-right">&copy;2021 Instagram from facebook</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+
+
+        setInterval(()=>changeImage(),1000);
+
+        function changeImage(){
+            var images = document.getElementById('slider').getElementsByTagName('img');
+
+            for(i=0;i<images.length;i++){
+                var image=images[i];
+
+                if(image.classList.contains('active')){
+                    image.classList.remove('active');
+
+                    var nextImage=images[i+1];
+                    if(i==images.length-1){
+                        nextImage=images[0];
+                    }
+                    nextImage.classList.add('active')
+                    break
+                }
+
+            }
+        }
+        
+        function changeMode(){
+            var body=document.getElementsByTagName('body')[0];
+            var form=document.getElementById('login-form');
+            var links = document.getElementById('links').getElementsByTagName('a');
+            var copyRight = document.getElementById('copy-right');
+            if(body.classList.contains('dark')){
+                body.classList.remove('dark');
+                form.classList.remove('dark-form');
+                copyRight.classList.remove('copy-right');
+                for(var i =0;i<links.length;i++){
+                    links[i].classList.remove('dark-links')
+
+                }
+            }else{
+                body.classList.add('dark');
+                form.classList.add('dark-form');
+                copyRight.classList.add('copy-right');
+
+                for(var i =0;i<links.length;i++){
+                    links[i].classList.add('dark-links')
+
+                }
+            }
+        }
+
+        document.getElementById('dark-btn').addEventListener('click',(e)=>{
+            e.preventDefault();
+            changeMode();
+        })
+
+    </script>
+</body>
+</html>
